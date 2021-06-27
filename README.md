@@ -1,6 +1,6 @@
 # Sorting-Algorithms
 
- Bubble sort general version
+* Bubble sort general version
 * Bubble sort optimized version
 * Linear search
 * Binary search
