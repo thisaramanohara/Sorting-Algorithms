@@ -2,10 +2,17 @@ public class Main {
     public static void main (String [] args) {
         int numberList [] = {2,4,3,45,6,34,23,43,54,34};
         int orderdList [] = {2,4,6,15,16,34,38,43,54,77};
+        int numberListForSelectionSort [] = {2,4,3,45};
         //bubble_sort_general(numberList);
         //bubble_sort_optimized(numberList);
         //System.out.println(linear_search(numberList,99));
-        System.out.println(binary_search(orderdList,6,0,orderdList.length-1));
+        //System.out.println(binary_search(orderdList,6,0,orderdList.length-1));
+        numberListForSelectionSort = selection_sort(numberListForSelectionSort);
+
+        
+        for (int i=0;i<numberListForSelectionSort.length;i++) {
+            System.out.println(numberListForSelectionSort[i]);
+        }
 
     }
 
@@ -65,5 +72,85 @@ public class Main {
         if(data[mid]>key) return binary_search(data,key,start,mid-1);
         return binary_search(data,key,mid+1,end);
     }
+
+//    static int [] mergeSort(int [] data,int start,int end) {
+//        System.out.println("Im again");
+//        int mid = (int)((start+end)/2);
+//        int [] mergedList = new int[end-start];
+//        if(start<end) {
+//            //mid = (int)((start+end)/2);
+//            mergeSort(data,start,mid);
+//            mergeSort(data,mid+1,end);
+//            mergedList = merge(data,start,mid,end);
+//
+////            for(int x=start;x<=end;x++){
+////                data[x] = mergedList[x];
+////            }
+//        }
+//        return mergedList;
+//    }
+//
+//    static int [] merge(int [] data,int start,int mid,int end) {
+//        int [] merged = new int[end-start];
+//        int i = start; int j = mid+1; int k = start;
+//        while (i<=mid && j<=end) {
+//            if(data[i] <= data[j]){
+//                merged[k] = data[i];
+//                i++;
+//            }else {
+//                merged[k] = data[j];
+//                j++;
+//            }
+//            k++;
+//        }
+//        if(i>mid){
+//            while (j<=end) {
+//                merged[k] = data[j];
+//                j++;
+//                k++;
+//            }
+//        }else{
+//            while (i<=end) {
+//                merged[k] = data[i];
+//                i++;
+//                k++;
+//            }
+//        }
+//
+//        return merged;
+//    }
+
+    //for the convenience
+    static void swap(int []d, int i, int j) {
+        int tmp = d[i];
+        d[i] = d[j];
+        d[j] = tmp;
+    }
+
+    static int [] selection_sort(int [] data) {
+        for (int i=0;i<data.length-1;i++) {
+            int min = i;
+            for (int j=i+1;j<data.length;j++) {
+                if(data[j] < data[min]) {
+                    min = j;
+                }
+            }
+            if(min != i) {
+                swap(data,i,min);
+            }
+        }
+        return data;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }
