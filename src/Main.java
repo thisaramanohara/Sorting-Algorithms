@@ -2,16 +2,16 @@ public class Main {
     public static void main (String [] args) {
         int numberList [] = {2,4,3,45,6,34,23,43,54,34};
         int orderdList [] = {2,4,6,15,16,34,38,43,54,77};
-        int numberListForSelectionSort [] = {2,4,3,45};
+        int numberListForInsertionSort [] = {2,4,3,45};
         //bubble_sort_general(numberList);
         //bubble_sort_optimized(numberList);
         //System.out.println(linear_search(numberList,99));
         //System.out.println(binary_search(orderdList,6,0,orderdList.length-1));
-        numberListForSelectionSort = selection_sort(numberListForSelectionSort);
+        //numberListForSelectionSort = selection_sort(numberListForSelectionSort);
+        numberListForInsertionSort = insertion_sort(numberListForInsertionSort);
 
-        
-        for (int i=0;i<numberListForSelectionSort.length;i++) {
-            System.out.println(numberListForSelectionSort[i]);
+        for (int i=0;i<numberListForInsertionSort.length;i++) {
+            System.out.println(numberListForInsertionSort[i]);
         }
 
     }
@@ -142,6 +142,18 @@ public class Main {
         return data;
     }
 
+    static int [] insertion_sort(int [] data) {
+        for (int i=1;i<data.length;i++) {
+            int temp = data[i];
+            int j = i-1;
+            while (j>=0 && data[j]>temp) {
+                data[j+1] = data[j];
+                j--;
+            }
+            data[j+1] = temp;
+        }
+        return data;
+    }
 
 
 
